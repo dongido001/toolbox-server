@@ -1,4 +1,5 @@
 import CategoryController from './Controllers/CategoryController';
+import LinkController from './Controllers/LinkController';
 
 const categoryRoutes = [
     {
@@ -23,6 +24,30 @@ const categoryRoutes = [
     },
 ]
 
+const linkRoutes = [
+    {
+        method: 'GET',
+        path: '/links',
+        handler: LinkController.index
+    },
+    {
+        method: 'POST',
+        path: '/links',
+        handler: LinkController.create
+    },
+    {
+        method: 'GET',
+        path: '/links/{id}/delete',
+        handler: LinkController.delete
+    },
+    {
+        method: 'POST',
+        path: '/links/{id}/update',
+        handler: LinkController.update
+    },
+]
+
 export default [].concat(
     categoryRoutes,
+    linkRoutes
 );
