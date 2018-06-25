@@ -23,4 +23,6 @@ const categoryRoutes = [
     },
 ]
 
-export default categoryRoutes;
+export default [].concat(
+    categoryRoutes,
+);
