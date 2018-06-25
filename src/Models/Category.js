@@ -1,3 +1,5 @@
+'use strict';
+
 import Model from './Model'
 
 var Category = Model.Model.extend({

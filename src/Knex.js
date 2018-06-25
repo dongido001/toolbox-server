@@ -1,3 +1,4 @@
+'use strict';
 
 var knex = require('knex')({
   client: 'mysql',
