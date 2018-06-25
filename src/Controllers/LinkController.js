@@ -83,7 +83,7 @@ class LinkController {
         try {
             await new Link({id, url})
               .save();
-        } catch (error) { console.log(error)}
+        } catch (error) { }
 
         const response = {
             status: 'success',
