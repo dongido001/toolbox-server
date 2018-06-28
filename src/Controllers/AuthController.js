@@ -76,24 +76,39 @@ class AuthController {
      * @returns json
      */
     async register(request, h) {
-
         const {username, password, email, name} = request.payload;
-        const hash = await Bcrypt.hash(password, process.env.KEY);
 
+        /** @todo : check for username and email seperately */
         const user = User
             .query({where: {username: username}, orWhere: {email: email}})
-            .where('password', hash)
-            .fetch()
+            .get()
+        
+        if (user) {
+            const response = {
+                status: 'error',
+                message: 'User with that details already exists'
+            }
+        
+            return h.response(response).code(401);
+        } 
+        
+        const hash_password = await Bcrypt.hash(password, 10);
+          
+        const new_user = new User({
+            username: username,
+            password: hash_password,
+            email: email,
+            name: name
+        });
+        await new_user.save();
 
-        const links = await Link.fetchAll();
-  
         const response = {
-          status: 'success',
-          data: links
+            status: 'success',
+            message: 'User created successfully'
         }
-  
-        return h.response(response).code(200);
-      }
+
+        return h.response(response).code(201);
+    }
 }
 
 export default (new AuthController);

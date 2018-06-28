@@ -53,8 +53,14 @@ const linkRoutes = [
 const authRoutes = [
     {
         method: 'GET',
-        path: '/token',
+        path: '/login',
         handler: AuthController.login,
+        config: { auth: false } 
+    },
+    {
+        method: 'POST',
+        path: '/register',
+        handler: AuthController.register,
         config: { auth: false } 
     },
 ];
