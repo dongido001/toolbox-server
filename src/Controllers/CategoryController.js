@@ -11,7 +11,6 @@ class CategoryController {
      * @returns json
      */
     async index(request, h) {
-
       const categories = await Category.fetchAll();
 
       const response = {
@@ -30,7 +29,6 @@ class CategoryController {
      */
     async create(request, h) {
       const { name } = request.payload;
-
       const category = new Category({
           name
       });

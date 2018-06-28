@@ -15,9 +15,3 @@
 
 ## Todo
 ...
-
-## Contributors
-
-The following awesome people have contributed to the code:
-
-- Onwuka Gideon

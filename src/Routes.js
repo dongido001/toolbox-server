@@ -1,5 +1,8 @@
+'use strict';
+
 import CategoryController from './Controllers/CategoryController';
 import LinkController from './Controllers/LinkController';
+import AuthController from './Controllers/AuthController';
 
 const categoryRoutes = [
     {
@@ -22,7 +25,7 @@ const categoryRoutes = [
         path: '/categories/{id}/update',
         handler: CategoryController.update
     },
-]
+];
 
 const linkRoutes = [
     {
@@ -45,9 +48,19 @@ const linkRoutes = [
         path: '/links/{id}/update',
         handler: LinkController.update
     },
-]
+];
+
+const authRoutes = [
+    {
+        method: 'GET',
+        path: '/token',
+        handler: AuthController.login,
+        config: { auth: false } 
+    },
+];
 
 export default [].concat(
     categoryRoutes,
-    linkRoutes
+    linkRoutes,
+    authRoutes
 );

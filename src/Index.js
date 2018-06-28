@@ -4,14 +4,14 @@ import 'dotenv/config';
 import Hapi from 'hapi';
 import Knex from './Knex';
 import Routes from './Routes';
-import validate from './Helpers/auth'
+import validate from './Helpers/auth';
+import JWT from 'jsonwebtoken';
 
 // Create a server with a host and port
 const server=Hapi.server({
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 9393,
 });
-
 
 // Add the route
 server.route(Routes);
@@ -39,6 +39,6 @@ async function start() {
 
     console.log('Server running at:', server.info.uri);
     // console.log(process.env)
-};
+}
 
 start();

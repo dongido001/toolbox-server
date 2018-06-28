@@ -11,7 +11,6 @@ class LinkController {
      * @returns json
      */
     async index(request, h) {
-
       const links = await Link.fetchAll();
 
       const response = {
