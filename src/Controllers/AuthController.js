@@ -56,17 +56,17 @@ class AuthController {
             data: { email: email }
         }, process.env.KEY, { expiresIn: '1m' });
     
-       try {
+        try {
             await new User({id: user.id, token})
             .save();
         } catch (error) {}
 
-      const response = {
-        status: 'success',
-        token: token
-      }
+        const response = {
+            status: 'success',
+            token: token
+        }
 
-      return h.response(response).code(200);
+        return h.response(response).code(200);
     }
 
     /**
